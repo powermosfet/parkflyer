@@ -1,6 +1,6 @@
 $fn = 64;
 
-tube_d = 11;
+tube_d = 11.2;
 wall_thickness = 1.2;
 plate_thickness = 1.5;
 plate_width = 21;
