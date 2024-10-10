@@ -8,7 +8,7 @@ drill_d = 2;
 module outer() {
   cylinder(h = h, d = od);
   translate([0, 0, h]) { 
-    cylinder(h = od, d1 = od, d2 = 0);
+    cube([8, 8, 3], center = true);;
   }
 }
 
