@@ -1,8 +1,8 @@
 $fn = 64;
 
 h = 4.5;
-id = 3.8;
-od = 6;
+id = 3.9;
+od = 6.2;
 drill_d = 2;
 
 module outer() {
