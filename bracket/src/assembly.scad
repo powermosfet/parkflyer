@@ -32,7 +32,7 @@ module plate() {
 }
 
 module bracket(l) {
-  translate([l / 2, 0, tube_d / 2 + wall_thickness + plate_thickness]) {
+  translate([l / 2, 0, tube_d / 2 + plate_thickness]) {
     rotate([0, 90, 0]) {
       difference() {
         hull() {
