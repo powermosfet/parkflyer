@@ -15,9 +15,9 @@ hole_2_pos = 54.5;
 peg_h = 4.5;
 peg_cube_w = 8;
 peg_cube_h = 3;
-peg_id = 3.9;
+peg_id = 4;
 peg_od = 6.2;
-peg_drill_d = 2;
+peg_drill_d = 2.5;
 
 
 module plate() {
