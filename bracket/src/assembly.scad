@@ -2,7 +2,7 @@ $fn = 64;
 
 tube_d = 11.2;
 wall_thickness = 1.5;
-plate_thickness = 1.5;
+plate_thickness = 1;
 plate_width = 21;
 plate_length = 70;
 plate_radius = 3;
@@ -14,7 +14,7 @@ hole_1_pos = 15;
 hole_2_pos = 54.5;
 peg_h = 4.5;
 peg_cube_w = 8;
-peg_cube_h = 3;
+peg_cube_h = plate_thickness;
 peg_id = 4;
 peg_od = 6.2;
 peg_drill_d = 2.5;
@@ -32,17 +32,22 @@ module plate() {
 }
 
 module bracket(l) {
-  translate([l / 2, 0, tube_d / 2 + plate_thickness]) {
-    rotate([0, 90, 0]) {
-      difference() {
-        hull() {
-          cylinder(l, r = tube_d / 2 + wall_thickness, center = true);
-          translate([wall_thickness / 2 + tube_d / 2, 0, 0]) {
-            cube([wall_thickness, tube_d + (wall_thickness * 2), l], center = true);
+  difference() {
+    translate([l / 2, 0, tube_d / 2 + plate_thickness]) {
+      rotate([0, 90, 0]) {
+        difference() {
+          hull() {
+            cylinder(l, r = tube_d / 2 + wall_thickness, center = true);
+            translate([wall_thickness / 2 + tube_d / 2, 0, 0]) {
+              cube([wall_thickness, tube_d + (wall_thickness * 2), l], center = true);
+            }
           }
+          cylinder(l + 2, d = tube_d, center = true);
         }
-        cylinder(l + 2, d = tube_d, center = true);
       }
+    }
+    translate([-1, (tube_d + wall_thickness * 2 + 2) / -2, -wall_thickness * 2]) {
+      cube([l + 2, tube_d + wall_thickness * 2 + 2, wall_thickness * 2]);
     }
   }
 }
@@ -76,6 +81,7 @@ module drill() {
 module bracket_drill() {
   translate([0, 0, -peg_h]) {
     outer();
+    translate([0, 0, -1]) { outer(); }
     drill();
   }
 }
