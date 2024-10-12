@@ -71,6 +71,13 @@ module outer() {
   }
 }
 
+module peg() {
+  difference() {
+    outer();
+    drill();
+  }
+}
+
 module drill() {
   translate([0, 0, -1]) {
     cylinder(h = 100, d = peg_drill_d); 
@@ -98,8 +105,18 @@ module hole_2() {
   }
 }
 
-plate();
-bracket_1();
-bracket_2();
-hole_1();
-hole_2();
+difference() {
+  union() {
+    plate();
+    bracket_1();
+    bracket_2();
+  }
+  hole_1();
+  hole_2();
+}
+translate([hole_1_pos, 0, -peg_h]) {
+  peg();
+}
+translate([hole_2_pos, 0, -peg_h]) {
+  peg();
+}
